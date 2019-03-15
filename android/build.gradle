@@ -35,9 +35,12 @@ android {
 }
 
 repositories {
-    mavenCentral()
+    maven {
+      url  "http://maven.zaius.com"
+    }
 }
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    compile 'com.zaius:androidsdk:2.1.0'
 }

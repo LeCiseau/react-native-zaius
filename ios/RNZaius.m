@@ -26,9 +26,9 @@ RCT_EXPORT_METHOD(anonymize)
     [Zaius anonymize];
 }
 
-RCT_EXPORT_METHOD(event:(NSString*)eventType options:(NSDictionary *)options)
+RCT_EXPORT_METHOD(event:(NSString*)eventType fields:(NSDictionary *)fields)
 {
-    NSString *action = [options valueForKey:@"action"];
+    NSString *action = [fields valueForKey:@"action"];
     ZaiusEvent* event = [ZaiusEvent eventWithEventType:eventType action:action];
 
     /* while keys */
