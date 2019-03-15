@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "RNZaius"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "RNZaius"
   s.description  = <<-DESC
                   A bridge for the Zaius Android/iOS APK

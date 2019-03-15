@@ -1,5 +1,6 @@
-
 #import "RNZaius.h"
+#import <ZaiusSDK_iOS/ZaiusSDK_iOS.h>
+#import <React/RCTDefines.h>
 
 @implementation RNZaius
 
@@ -7,7 +8,8 @@
 {
     return dispatch_get_main_queue();
 }
-RCT_EXPORT_MODULE()
+
+RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(enablePushNotifications)
 {

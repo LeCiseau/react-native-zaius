@@ -3,7 +3,6 @@
 #import "RCTBridgeModule.h"
 #else
 #import <React/RCTBridgeModule.h>
-#import <ZaiusSDK_iOS/ZaiusSDK_iOS.h>
 #endif
 
 @interface RNZaius : NSObject <RCTBridgeModule>
