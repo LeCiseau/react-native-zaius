@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
   s.homepage = "https://github.com/LeCiseau/react-native-zaius"
 
   s.dependency "React"
-  s.dependency "Zaius"
+  s.dependency "Zaius", '~> 2.1.0'
 
 end
