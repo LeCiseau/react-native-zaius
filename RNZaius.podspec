@@ -9,15 +9,13 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   A bridge for the Zaius Android/iOS APK
                    DESC
-  s.homepage     = ""
   s.license      = package['license']
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author       = { "author" => "tech@leciseau.fr" }
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/LeCiseau/react-native-zaius.git", :tag => "master" }
-  s.source_files = "**/*.{h,m}"
+  s.source_files = "ios/*.{h,m}"
   s.requires_arc = true
-  s.homepage = "https://github.com/LeCiseau/react-native-zaius"
+  s.homepage = package['homepage']
   s.module_name  = "RNZaius"
 
   s.dependency "React"

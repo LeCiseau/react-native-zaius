@@ -1,7 +1,8 @@
 {
   "name": "react-native-zaius",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A bridge for the Zaius Android/iOS APK",
+  "homepage": "https://github.com/LeCiseau/react-native-zaius",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -8,7 +8,7 @@
 
 #### iOS pod
 
-1. Add `pod 'RNZaius', :path => '../node_modules/react-native-zaius/ios'` in your `Podfile`
+1. Add `pod 'RNZaius', :path => '../node_modules/react-native-zaius'` in your `Podfile`
 2. Run `pod install`
 
 #### Android
@@ -28,7 +28,7 @@
 
 ## Usage
 ```javascript
-import RNZaius from 'react-native-zaius';
+import Zaius from 'react-native-zaius';
 
 // TODO: What to do with the module?
 RNZaius;
