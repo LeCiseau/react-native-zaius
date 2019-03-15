@@ -10,6 +10,6 @@ public class RNZaiusReceiver extends ZaiusReceiver {
   public void onTokenRegistration(Context context, String token) {
     Intent intent = new Intent(this.getPackageName() + ".RNZaiusTokenRegistered");
     intent.putExtra("token", token);
-    sendBroadcast(intent);
+    context.sendBroadcast(intent);
   }
 }

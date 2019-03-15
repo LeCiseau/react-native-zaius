@@ -11,11 +11,15 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
 
 import com.zaius.androidsdk.Zaius;
 import com.zaius.androidsdk.ZaiusEvent;
+import com.zaius.androidsdk.ZaiusPageView;
 
-public class RNZaiusModule extends ReactContextBaseJavaModule implements ActivityEventListener {
+public class RNZaiusModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
 
@@ -24,7 +28,8 @@ public class RNZaiusModule extends ReactContextBaseJavaModule implements Activit
     reactContext.addActivityEventListener(this);
     this.reactContext = reactContext;
 
-    jsEvent = new RNZaiusJsEvent(reactContext);
+    RNZaiusJsEvent jsEvent = new RNZaiusJsEvent(reactContext);
+    this.jsEvent = jsEvent;
     registerNotificationsRegistration();
   }
 
@@ -42,7 +47,7 @@ public class RNZaiusModule extends ReactContextBaseJavaModule implements Activit
               String token = intent.getStringExtra("token");
               WritableMap params = Arguments.createMap();
               params.putString("token", token);
-              jsEvent.sendEvent("notificationsRegistered", params);
+              this.jsEvent.sendEvent("notificationsRegistered", params);
           }
       }, intentFilter);
   }
