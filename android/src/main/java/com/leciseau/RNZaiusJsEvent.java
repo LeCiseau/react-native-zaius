@@ -9,8 +9,8 @@ import com.facebook.react.bridge.WritableMap;
 public class RNZaiusJsEvent {
     private final ReactApplicationContext reactContext;
 
-    public RNZaiusModule(ReactApplicationContext reactContext) {
-      super(RNZaiusJsEvent);
+    public RNZaiusJsEvent(ReactApplicationContext reactContext) {
+      super(reactContext);
       this.reactContext = reactContext;
     }
 
