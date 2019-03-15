@@ -70,7 +70,7 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
     while (iterator.hasNextKey()) {
         String key = iterator.nextKey();
         if (key != "action" && key != null) {
-            newEvent.addField(key, readableMap.getString(key);
+            newEvent.addField(key, readableMap.getString(key));
         }
     }
     Zaius.sendEvent(newEvent);
