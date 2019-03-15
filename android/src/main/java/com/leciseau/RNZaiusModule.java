@@ -22,10 +22,10 @@ import com.zaius.androidsdk.ZaiusPageView;
 public class RNZaiusModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
+  private final RNZaiusJsEvent jsEvent;
 
   public RNZaiusModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    reactContext.addActivityEventListener(this);
     this.reactContext = reactContext;
 
     RNZaiusJsEvent jsEvent = new RNZaiusJsEvent(reactContext);
@@ -70,7 +70,7 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
     while (iterator.hasNextKey()) {
         String key = iterator.nextKey();
         if (key != "action" && key != null) {
-            newEvent.addField(key, key.getString());
+            newEvent.addField(key, readableMap.getString(key);
         }
     }
     Zaius.sendEvent(newEvent);
