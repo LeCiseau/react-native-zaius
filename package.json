@@ -1,6 +1,6 @@
 {
   "name": "react-native-zaius",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A bridge for the Zaius Android/iOS APK",
   "homepage": "https://github.com/LeCiseau/react-native-zaius",
   "main": "index.js",

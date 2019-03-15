@@ -18,6 +18,9 @@ import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.zaius.androidsdk.Zaius;
 import com.zaius.androidsdk.ZaiusEvent;
 import com.zaius.androidsdk.ZaiusPageView;
+import com.zaius.androidsdk.ZaiusException;
+
+import android.util.Log;
 
 public class RNZaiusModule extends ReactContextBaseJavaModule {
 
@@ -40,7 +43,7 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
 
   private void registerNotificationsRegistration() {
       IntentFilter intentFilter = new IntentFilter(getReactApplicationContext().getPackageName() + ".RNZaiusTokenRegistered");
-      RNZaiusJsEvent jsEvent = this.jsEvent;
+      final RNZaiusJsEvent jsEvent = this.jsEvent;
       getReactApplicationContext().registerReceiver(new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
@@ -54,12 +57,20 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void identify(String customerId) {
-      Zaius.setCustomerId(customerId);
+      try {
+          Zaius.setCustomerId(customerId);
+      } catch (ZaiusException e) {
+          Log.e("com.leciseau.RNZaiusModule", "Zaius identity failed", e);
+      }
   }
 
   @ReactMethod
   public void anonymize() {
-      Zaius.anonymize();
+      try {
+          Zaius.anonymize();
+      } catch (ZaiusException e) {
+          Log.e("com.leciseau.RNZaiusModule", "Zaius anonymize failed", e);
+      }
   }
 
   @ReactMethod
@@ -73,11 +84,19 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
             newEvent.addField(key, fields.getString(key));
         }
     }
-    Zaius.sendEvent(newEvent);
+    try {
+        Zaius.sendEvent(newEvent);
+    } catch (ZaiusException e) {
+        Log.e("com.leciseau.RNZaiusModule", "Zaius event failed", e);
+    }
   }
 
   @ReactMethod
   public void pageView(String page) {
-      Zaius.sendEvent(new ZaiusPageView().page(page));
+    try {
+        Zaius.sendEvent(new ZaiusPageView().page(page));
+    } catch (ZaiusException e) {
+        Log.e("com.leciseau.RNZaiusModule", "Zaius pageView failed", e);
+    }
   }
 }
