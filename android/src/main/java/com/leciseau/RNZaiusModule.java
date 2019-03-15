@@ -40,14 +40,14 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
 
   private void registerNotificationsRegistration() {
       IntentFilter intentFilter = new IntentFilter(getReactApplicationContext().getPackageName() + ".RNZaiusTokenRegistered");
-
+      RNZaiusJsEvent jsEvent = this.jsEvent;
       getReactApplicationContext().registerReceiver(new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
               String token = intent.getStringExtra("token");
               WritableMap params = Arguments.createMap();
               params.putString("token", token);
-              this.jsEvent.sendEvent("notificationsRegistered", params);
+              jsEvent.sendEvent("notificationsRegistered", params);
           }
       }, intentFilter);
   }
@@ -70,7 +70,7 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
     while (iterator.hasNextKey()) {
         String key = iterator.nextKey();
         if (key != "action" && key != null) {
-            newEvent.addField(key, readableMap.getString(key));
+            newEvent.addField(key, fields.getString(key));
         }
     }
     Zaius.sendEvent(newEvent);
