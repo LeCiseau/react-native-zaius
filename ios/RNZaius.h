@@ -6,6 +6,6 @@
 #import <ZaiusSDK_iOS/ZaiusSDK_iOS.h>
 #endif
 
-@interface RNReactNativeZaius : NSObject <RCTBridgeModule>
+@interface RNZaius : NSObject <RCTBridgeModule>
 
 @end

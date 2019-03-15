@@ -1,7 +1,7 @@
 
-#import "RNReactNativeZaius.h"
+#import "RNZaius.h"
 
-@implementation RNReactNativeZaius
+@implementation RNZaius
 
 - (dispatch_queue_t)methodQueue
 {

@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
 
-const { RNReactNativeZaius } = NativeModules;
+const { RNZaius } = NativeModules;
 
-export default RNReactNativeZaius;
+export default RNZaius;
