@@ -1,6 +1,6 @@
 package com.leciseau;
 
-import com.zaius.ZaiusReceiver;
+import com.zaius.androidsdk.ZaiusReceiver;
 
 import android.content.Intent;
 import android.content.Context;

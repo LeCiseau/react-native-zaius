@@ -12,8 +12,8 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.WritableMap;
 
-import com.zaius.Zaius;
-import com.zaius.ZaiusEvent;
+import com.zaius.androidsdk.Zaius;
+import com.zaius.androidsdk.ZaiusEvent;
 
 public class RNZaiusModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
