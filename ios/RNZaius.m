@@ -31,11 +31,11 @@ RCT_EXPORT_METHOD(event:(NSString*)eventType fields:(NSDictionary *)fields)
     NSString *action = [fields valueForKey:@"action"];
     ZaiusEvent* event = [ZaiusEvent eventWithEventType:eventType action:action];
 
-    /* while keys */
-    // page is a field available on any event, but primarily used for pageviews
-    // event[@"page"] = @"map_explorer";
-    // where map_region is a custom field you added to events in the Zaius App
-    // event[@"map_region"] = @"North America";
+    for (NSString* key in fields) {
+        if (![key isEqualToString:@"action"]) {
+            event[key] = fields[key];
+        }
+    }
     [Zaius event:event];
 }
 

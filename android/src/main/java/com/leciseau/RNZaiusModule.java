@@ -75,12 +75,17 @@ public class RNZaiusModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void event(String eventType, ReadableMap fields) {
-    ZaiusEvent newEvent = new ZaiusEvent(eventType)
-      .action(fields.getString("action"));
+    ZaiusEvent newEvent = new ZaiusEvent(eventType);
+    if (fields.hasKey("action")) {
+        newEvent.action(fields.getString("action"));
+    }
+    if (fields.hasKey("customerId")) {
+        newEvent.customerId(fields.getString("customerId"));
+    }
     ReadableMapKeySetIterator iterator = fields.keySetIterator();
     while (iterator.hasNextKey()) {
         String key = iterator.nextKey();
-        if (key != "action" && key != null) {
+        if (key != "action" && key != "customerId" && key != null) {
             newEvent.addField(key, fields.getString(key));
         }
     }

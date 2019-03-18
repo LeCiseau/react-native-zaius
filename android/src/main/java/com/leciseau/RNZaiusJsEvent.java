@@ -11,7 +11,7 @@ public class RNZaiusJsEvent {
     private final ReactApplicationContext reactContext;
 
     public RNZaiusJsEvent(ReactApplicationContext reactContext) {
-      this.reactContext = reactContext;
+        this.reactContext = reactContext;
     }
 
     public void sendEvent(String eventName, WritableMap params) {
