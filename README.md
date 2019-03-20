@@ -1,106 +1,73 @@
 # react-native-zaius
+[![npm version](https://badge.fury.io/js/react-native-zaius.svg)](https://badge.fury.io/js/react-native-zaius)
+![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-yellow.svg)
+![MIT](https://img.shields.io/dub/l/vibe-d.svg)
 
-## Getting started
-
-`$ npm install react-native-zaius --save`
-
-### Installation
-
-#### iOS pod
-
-1. Add `pod 'RNZaius', :path => '../node_modules/react-native-zaius'` in your `Podfile`
-2. Run `pod install`
-3. Open `AppDelegate.m`
-  ```objective-c
-    ...
-    #import <ZaiusSDK_iOS/ZaiusSDK_iOS.h>
-
-    ...
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-    {
-        [Zaius autoIntegrate:^(ZaiusBuilder *_Nonnull builder) {
-          builder.trackerId = @"MY_TRACKER_ID";
-          builder.appId = @"MY_APPLICATION_ID";
-          builder.launchOptions = launchOptions;
-          builder.collectTokenWhenAnonymous = YES;
-          builder.sandbox = NO;
-        }];
-
-        ...
-    }
-  ```
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  ```java
-  ...
-  import com.leciseau.RNZaiusPackage;
-  import com.zaius.androidsdk.Zaius;
-  import com.zaius.androidsdk.ZaiusConfig;
-  import com.zaius.androidsdk.ZaiusEnvironment;
-  import com.zaius.androidsdk.ZaiusException;
-  import android.util.Log;
-
-  public class MainApplication ... {
-      ...
-
-      protected List<ReactPackage> getPackages() {
-          ...
-          return Arrays.<ReactPackage>asList(
-              ...
-              new RNZaiusPackage()
-          );
-      }
-
-      @Override
-      public void onCreate() {
-        ...
-
-        String trackerId = "MY_TRACKER_ID";
-        String applicationId = "MY_APPLICATION_ID";
-        String senderId = "123456789";
-        boolean managePushTokens = true;
-        boolean collectTokensWhenAnonymous = true;
-        int flushIntervalSeconds = 60;
-        boolean enableLogging = true;
-        // set ZaiusEnvironment
-        ZaiusConfig zaiusConfig = new ZaiusConfig(ZaiusEnvironment.PRODUCTION, managePushTokens, flushIntervalSeconds, collectTokensWhenAnonymous);
-        try {
-            Zaius.start(this.getApplicationContext(), trackerId, applicationId, senderId, zaiusConfig);
-        } catch (ZaiusException e) {
-            Log.e("com.leciseau.customer", "Zaius start failed", e);
-        }
-
-        ...
-      }
-  }
-
-  ```
-2. Append the following lines to `android/settings.gradle`:
-  	```gradle
-  	include ':react-native-zaius'
-  	project(':react-native-zaius').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-zaius/android')
-  	```
-3. Add the following in `android/build.gradle`:
-    ```gradle
-    allprojects {
-        repositories {
-            ...
-            maven { url "http://maven.zaius.com" }
-        }
-    }
-  	```
-4. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```gradle
-    implementation project(':react-native-zaius')
-    implementation 'com.zaius:androidsdk:2.1.0'
-  	```
+## Installation
+[Documentation](INSTALL.md)
 
 ## Usage
+[event](#event)
+[identify](#identify)
+[anonymize](#anonymize)
+[pageView](#pageView)
+
+### event
+Send an event with the specified type and fields [Zaius](https://developers.zaius.com/v3/reference#events-overview)
+```javascript
+  event(type, fields);
+```
+
+example:
 ```javascript
 import Zaius from 'react-native-zaius';
 
-// TODO: What to do with the module?
-RNZaius;
+Zaius.event('product', {
+  action: 'add_to_card',
+  product_id: '424242',
+  custom: 'custom',
+});
 ```
+
+### identify
+Identify an user (Zaius)[https://developers.zaius.com/v3/reference#identity-resolution]
+```javascript
+  identify(customerId);
+```
+
+example:
+```javascript
+import Zaius from 'react-native-zaius';
+
+Zaius.identify('1245678910');
+```
+
+### anonymize
+Anonymize an user (Zaius)[https://developers.zaius.com/v3/reference#identity-resolution]
+```javascript
+  anonymize();
+```
+
+example:
+```javascript
+import Zaius from 'react-native-zaius';
+
+Zaius.anonymize();
+```
+
+### pageView
+Track a page view (Zaius)[https://developers.zaius.com/v3/reference#ios-1]
+```javascript
+  pageView();
+```
+
+example:
+```javascript
+import Zaius from 'react-native-zaius';
+
+Zaius.pageView('HOMEPAGE');
+```
+
+## License
+
+[MIT](LICENSE.md)
