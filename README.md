@@ -58,7 +58,7 @@ Zaius.anonymize();
 ### pageView
 Track a page view [Zaius](https://developers.zaius.com/v3/reference#ios-1)
 ```javascript
-  pageView();
+  pageView(page);
 ```
 
 example:
