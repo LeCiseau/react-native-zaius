@@ -67,7 +67,7 @@
         try {
             Zaius.start(this.getApplicationContext(), trackerId, applicationId, senderId, zaiusConfig);
         } catch (ZaiusException e) {
-            Log.e("com.leciseau.customer", "Zaius start failed", e);
+            Log.e("com.leciseau.RNzaius", "Zaius start failed", e);
         }
 
         ...
